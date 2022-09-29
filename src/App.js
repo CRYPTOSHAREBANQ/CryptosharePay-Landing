@@ -1,17 +1,22 @@
-import React from 'react';
-import Header from './components/Header';
-import Feature from './components/Feature';
-import About from './components/About';
-import Presentation from './components/Presentation';
-import aboutimage from './images/about.png'
+import logo from './logo.svg';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from "./components/NavBar";
+import { Banner } from "./components/Banner";
+import { Company } from "./components/Company";
+import { Apis } from "./components/Apis";
+import { SignUp } from "./components/SignUp";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Feature/>
-      <About image={aboutimage} title='Comes With All You Need For Daily Life' button='Get the API'/>
-      <Presentation/>
+      <NavBar />
+      <Banner />
+      <Company />
+      <Apis />
+      <SignUp />
+      <Footer />
     </div>
   );
 }
