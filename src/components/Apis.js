@@ -11,17 +11,17 @@ export const Apis = () => {
 
   const apisNames = [
     {
-      title: "Business Startup",
+      title: "Business",
       description: "Design & Development",
       imgUrl: projImg1,
     },
     {
-      title: "Business Startup",
+      title: "Business",
       description: "Design & Development",
       imgUrl: projImg2,
     },
     {
-      title: "Business Startup",
+      title: "Business",
       description: "Design & Development",
       imgUrl: projImg3,
     },

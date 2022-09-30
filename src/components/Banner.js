@@ -55,7 +55,7 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h1>{`CryptoShare`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "APIs for Developers"]'><span className="wrap">{text}</span></span></h1>
+                <h1>{`CryptoShare`} <span className="txt-rotate" dataperiod="1000" data-rotate='[ "APIs for Developers"]'><span className="wrap">{text}</span></span></h1>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   <button onClick={() => console.log('connect')}>Get started for free <ArrowRightCircle size={25} /></button>
               </div>}
