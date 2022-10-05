@@ -4,10 +4,8 @@ import signupImg from "../assets/img/signup-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import Dropdown from 'react-dropdown';
-import { Select } from "semantic-ui-react";
+import {DropdownItem, DropdownMenu, Dropdo} from "reactstrap";
 import styled from 'styled-components';
-
-
 
 export const SignUp = () => {
   const formInitialDetails = {
@@ -118,6 +116,7 @@ export const SignUp = () => {
   font-size: 16px;
   letter-spacing: 0.8px;
   transition: 0.3s ease-in-out;
+
 `;
 
   const handleSubmit = async (e) => {
@@ -171,13 +170,12 @@ export const SignUp = () => {
                       <input type="password" value={formDetails.password} placeholder="Password" onChange={(e) => onFormUpdate('password', e.target.value)} />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="password" value={formDetails.password} placeholder="Confirm Password" onChange={(e) => onFormUpdate('password', e.target.value)} />
+                      <input type="password" value={formDetails.secondpassword} placeholder="Confirm Password" onChange={(e) => onFormUpdate('secondpassword', e.target.value)} />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
                       <DropDownContainer>
-                      <Dropdown options={options} placeholder="Select an option" onChange={handleChange}/>
+                      <Dropdown options={options} placeholder="Select a Country" onChange={handleChange}/>
                       </DropDownContainer>
-                      
                     </Col>
                     {
                       status.message &&

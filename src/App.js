@@ -4,8 +4,11 @@ import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Company } from "./components/Company";
 import { Apis } from "./components/Apis";
+import { Payments } from "./components/Payments";
+import { Payments2 } from "./components/Payments2";
 import { SignUp } from "./components/SignUp";
 import { Footer } from "./components/Footer";
+
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
       <Banner />
       <Company />
       <Apis />
+      <Payments />
       <SignUp />
       <Footer />
     </div>

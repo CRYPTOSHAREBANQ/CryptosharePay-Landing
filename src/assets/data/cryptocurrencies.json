@@ -1,0 +1,262 @@
+[
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "db74f6ad-aeef-4fec-b3ec-e70e2fc55d0e",
+        "fields": {
+            "blockchain_id": "bitcoin",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Bitcoin",
+            "coingecko_name": "bitcoin",
+            "symbol": "BTC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "8ee0b2c4-5b13-4de0-a97c-60e4cb8b25c3",
+        "fields": {
+            "blockchain_id": "bitcoin",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Bitcoin",
+            "coingecko_name": "bitcoin",
+            "symbol": "BTC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "33d3be23-a643-4782-98ff-689b0c5de604",
+        "fields": {
+            "blockchain_id": "litecoin",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Litecoin",
+            "coingecko_name": "litecoin",
+            "symbol": "LTC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "7ed7e113-fb3e-441a-914b-38b86e60a7f6",
+        "fields": {
+            "blockchain_id": "litecoin",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Litecoin",
+            "coingecko_name": "litecoin",
+            "symbol": "LTC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "83058d57-1a7a-45ce-a42f-a0e9e935206d",
+        "fields": {
+            "blockchain_id": "bitcoin-cash",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Bitcoin Cash",
+            "coingecko_name": "bitcoin-cash",
+            "symbol": "BCH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "ec730f9c-c29d-40ec-b3ea-4d99391abea2",
+        "fields": {
+            "blockchain_id": "bitcoin-cash",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Bitcoin Cash",
+            "coingecko_name": "bitcoin-cash",
+            "symbol": "BCH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "189495e5-4ec2-4276-92a5-2137864bc9c7",
+        "fields": {
+            "blockchain_id": "dogecoin",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Dogecoin",
+            "coingecko_name": "dogecoin",
+            "symbol": "DOGE",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "1010c6ef-49ac-4b05-90bf-88ddf02e408c",
+        "fields": {
+            "blockchain_id": "dogecoin",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Dogecoin",
+            "coingecko_name": "dogecoin",
+            "symbol": "DOGE",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "3cb983b4-c459-4984-bb88-fd125463b4a8",
+        "fields": {
+            "blockchain_id": "dash",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Dash",
+            "coingecko_name": "dash",
+            "symbol": "DASH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "74d33bf7-0cc9-48e4-a2f0-1e1e11517c27",
+        "fields": {
+            "blockchain_id": "dash",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Dash",
+            "coingecko_name": "dash",
+            "symbol": "DASH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "6089e31b-79ee-4a7d-9734-fb5d0364371c",
+        "fields": {
+            "blockchain_id": "ethereum",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Ethereum",
+            "coingecko_name": "ethereum",
+            "symbol": "ETH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "97f8f738-140a-4bf8-9008-cf5db0047a44",
+        "fields": {
+            "blockchain_id": "ethereum",
+            "network_id": "goerli",
+            "type": "COIN",
+            "name": "Ethereum",
+            "coingecko_name": "ethereum",
+            "symbol": "ETH",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "a4fda158-df85-45c0-89a8-293f9590ccdc",
+        "fields": {
+            "blockchain_id": "ethereum-classic",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Ethereum Classic",
+            "coingecko_name": "ethereum-classic",
+            "symbol": "ETC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "a3587b95-f849-463d-b581-fb11684b5384",
+        "fields": {
+            "blockchain_id": "ethereum-classic",
+            "network_id": "mordor",
+            "type": "COIN",
+            "name": "Ethereum Classic",
+            "coingecko_name": "ethereum-classic",
+            "symbol": "ETC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "ad5a0570-7fd1-43d3-837b-85470b3213fa",
+        "fields": {
+            "blockchain_id": "xrp",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "XRP",
+            "coingecko_name": "ripple",
+            "symbol": "XRP",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "e4c922cf-3049-4532-8193-d256afd92df4",
+        "fields": {
+            "blockchain_id": "xrp",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "XRP",
+            "coingecko_name": "ripple",
+            "symbol": "XRP",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "594529f8-70fa-4d42-9726-e8b267a87adf",
+        "fields": {
+            "blockchain_id": "zcash",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Zcash",
+            "coingecko_name": "zcash",
+            "symbol": "ZEC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "9e1e9220-86af-429b-ae0d-f62ba044706b",
+        "fields": {
+            "blockchain_id": "zcash",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Zcash",
+            "coingecko_name": "zcash",
+            "symbol": "ZEC",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "37ef8796-8fef-4402-9a06-3258913c5d88",
+        "fields": {
+            "blockchain_id": "tron",
+            "network_id": "mainnet",
+            "type": "COIN",
+            "name": "Tron",
+            "coingecko_name": "tron",
+            "symbol": "TRX",
+            "exchange_rate": "0E-8"
+        }
+    },
+    {
+        "model": "cryptocurrency.cryptocurrency",
+        "pk": "fe0253a7-9b13-4407-8cd7-d33c290ab204",
+        "fields": {
+            "blockchain_id": "tron",
+            "network_id": "testnet",
+            "type": "COIN",
+            "name": "Tron",
+            "coingecko_name": "tron",
+            "symbol": "TRX",
+            "exchange_rate": "0E-8"
+        }
+    }
+]
