@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Company } from "./components/Company";
 import { Apis } from "./components/Apis";
+import { Payments } from "./components/Payments";
 import { SignUp } from "./components/SignUp";
 import { Footer } from "./components/Footer";
 
@@ -15,6 +16,7 @@ function App() {
       <Banner />
       <Company />
       <Apis />
+      <Payments />
       <SignUp />
       <Footer />
     </div>
