@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import signupImg from "../assets/img/signup-img.svg";
-import styled from 'styled-components';
-import Dropdown from 'react-dropdown';
 import 'animate.css';
 import countries from '../assets/data/countries.json';
 import TrackVisibility from 'react-on-screen';
+import Select from 'react-select'
 
 export const SignUp = () => {
   const formInitialDetails = {
@@ -19,20 +18,6 @@ export const SignUp = () => {
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
 
-  const DropDownContainer = styled("div")`
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  color: #fff;
-  margin: 0 0 8px 0;
-  padding: 18px 26px;
-  font-weight: 200;
-  font-size: 16px;
-  letter-spacing: 0.8px;
-  transition: 0.3s ease-in-out;
-`;
-
   const onFormUpdate = (category, value) => {
     setFormDetails({
       ...formDetails,
@@ -41,8 +26,8 @@ export const SignUp = () => {
   }
 
   const getDropdownCountries = () => {
-    var currArray = [];
-    var currAdded = new Set();
+    let currArray = [];
+    let currAdded = new Set();
     countries.forEach(e => {
       if (!currAdded.has(e.value)) {
         currArray.push({
@@ -56,7 +41,7 @@ export const SignUp = () => {
   };
 
   const dropDownCountriesToStringArray = (data) => {
-    var stringArr = [];
+    let stringArr = [];
 
     data.forEach(e => {
       stringArr.push(e.value.toUpperCase() + ' (' + e.label + ')');
@@ -64,7 +49,7 @@ export const SignUp = () => {
     return stringArr;
   };
 
-  let dropDownCountries = dropDownCountriesToStringArray(getDropdownCountries());
+  let dropDownCountries = getDropdownCountries();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,7 +64,7 @@ export const SignUp = () => {
     setButtonText("Send");
     let result = await response.json();
     setFormDetails(formInitialDetails);
-    if (result.code == 200) {
+    if (result.code === 200) {
       setStatus({ succes: true, message: 'Form sent successfully' });
     } else {
       setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
@@ -121,9 +106,18 @@ export const SignUp = () => {
                         <input type="password" required value={formDetails.password} placeholder="Confirm Password" onChange={(e) => onFormUpdate('password', e.target.value)} />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
-                        <DropDownContainer>
-                          <Dropdown required options={dropDownCountries} placeholder="Select a Country" />
-                        </DropDownContainer>
+                          <Select 
+                          required options={countries} 
+                          placeholder="Select a Country" 
+                          theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 10,
+                            colors:{
+                              ...theme.colors,
+                              primary25: 'hotpink',
+                              primary: 'black',
+                            },
+                          })}/>
                         <button type="submit"><span>{buttonText}</span></button>
                       </Col>
                       {

@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import Dropdown from 'react-dropdown';
-import styled from 'styled-components';
 import countries from '../assets/data/countries.json';
 import cryptoData from '../assets/data/cryptocurrencies.json';
+import FormContainer from "./form/FormContainer/FormContainer"
 
 export const Payments = () => {
   const formInitialDetails = {
@@ -72,24 +71,9 @@ export const Payments = () => {
     setMessage(event.target.value);
   };
 
-
-  const DropDownContainer = styled("div")`
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    color: #fff;
-    margin: 0 0 8px 0;
-    padding: 18px 26px;
-    font-weight: 200;
-    font-size: 16px;
-    letter-spacing: 0.8px;
-    transition: 0.3s ease-in-out;
-`;
-
   const getDropdownCountries = () => {
-    var currArray = [];
-    var currAdded = new Set();
+    let currArray = [];
+    let currAdded = new Set();
     countries.forEach(e => {
       if (!currAdded.has(e.value)) {
         currArray.push({
@@ -103,7 +87,7 @@ export const Payments = () => {
   };
 
   const dropDownCountriesToStringArray = (data) => {
-    var stringArr = [];
+    let stringArr = [];
 
     data.forEach(e => {
       stringArr.push(e.value.toUpperCase() + ' (' + e.label + ')');
@@ -114,8 +98,8 @@ export const Payments = () => {
   let dropDownCountries = dropDownCountriesToStringArray(getDropdownCountries());
 
   const getDropdownData = () => {
-    var currArray = [];
-    var currAdded = new Set();
+    let currArray = [];
+    let currAdded = new Set();
     cryptoData.forEach(e => {
       if (!currAdded.has(e.fields.blockchain_id)) {
         currArray.push({
@@ -129,7 +113,7 @@ export const Payments = () => {
   };
 
   const dropDownDataToStringArray = (data) => {
-    var stringArr = [];
+    let stringArr = [];
 
     data.forEach(e => {
       stringArr.push(e.blockchain_id.toUpperCase() + ' (' + e.symbol + ')');
@@ -154,7 +138,7 @@ export const Payments = () => {
     let result = await response.json();
     setFormDetails(formInitialDetails);
     setFormPayDetails(formPaymentsDetails);
-    if (result.code == 200) {
+    if (result.code === 200) {
       setStatus({ succes: true, message: 'Form sent successfully' });
     } else {
       setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
@@ -166,6 +150,7 @@ export const Payments = () => {
         <Container>
           <Row className="align-items-center">
             <Col size={12} md={12}>
+              <FormContainer />
               <TrackVisibility>
                 {({ isVisible }) =>
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
@@ -182,9 +167,7 @@ export const Payments = () => {
                           <input type="text" required value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)} />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
-                          <DropDownContainer>
-                            <Dropdown required options={dropDownCountries} placeholder="Select a Country" />
-                          </DropDownContainer>
+                            <select required options={dropDownCountries} placeholder="Select a Country" />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
                           <input type="text" value={formDetails.business_name} placeholder="Business Name" onChange={(e) => onFormUpdate('business_name', e.target.value)} />
@@ -207,17 +190,13 @@ export const Payments = () => {
                           <input type="text" required value={formPayDetails.transactionDescription} placeholder="Transaction Description" onChange={(e) => onFormUpdate('transactionDescription', e.target.value)} />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
-                          <DropDownContainer>
-                            <Dropdown required options={options} placeholder="Select a Currency" />
-                          </DropDownContainer>
+                            <select required options={options} placeholder="Select a Currency" />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
                           <input type="text" required value={formPayDetails.digital_currency_amount} placeholder="Currency Amount" onChange={(e) => onFormUpdate('digital_currency_amount', e.target.value)} />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
-                          <DropDownContainer>
-                            <Dropdown required options={dropDownData} placeholder="Select a Crypto Currency" />
-                          </DropDownContainer>
+                            <select required options={dropDownData} placeholder="Select a Crypto Currency" />
                         </Col>
                         <Col size={12} sm={3} className="px-1">
                           <input type="text" required value={formPayDetails.customer_email} placeholder="Email" onChange={(e) => onFormUpdate('customer_email', e.target.value)} />

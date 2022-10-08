@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import signupImg from "../assets/img/signup-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import Dropdown from 'react-dropdown';
 import styled from 'styled-components';
 import countries from '../assets/data/countries.json';
 import cryptoData from '../assets/data/cryptocurrencies.json';
-import { render } from "react-dom";
 
 export const Transactions = () => {
 
@@ -71,8 +69,8 @@ export const Transactions = () => {
 `;
 
   const getDropdownCountries = () => {
-    var currArray = [];
-    var currAdded = new Set();
+    let currArray = [];
+    let currAdded = new Set();
     countries.forEach(e => {
       if (!currAdded.has(e.value)) {
         currArray.push({
@@ -86,7 +84,7 @@ export const Transactions = () => {
   };
 
   const dropDownCountriesToStringArray = (data) => {
-    var stringArr = [];
+    let stringArr = [];
 
     data.forEach(e => {
       stringArr.push(e.value.toUpperCase() + ' (' + e.label + ')');
@@ -97,8 +95,8 @@ export const Transactions = () => {
   let dropDownCountries = dropDownCountriesToStringArray(getDropdownCountries());
 
   const getDropdownData = () => {
-    var currArray = [];
-    var currAdded = new Set();
+    let currArray = [];
+    let currAdded = new Set();
     cryptoData.forEach(e => {
       if (!currAdded.has(e.fields.blockchain_id)) {
         currArray.push({
@@ -112,7 +110,7 @@ export const Transactions = () => {
   };
 
   const dropDownDataToStringArray = (data) => {
-    var stringArr = [];
+    let stringArr = [];
 
     data.forEach(e => {
       stringArr.push(e.blockchain_id.toUpperCase() + ' (' + e.symbol + ')');
