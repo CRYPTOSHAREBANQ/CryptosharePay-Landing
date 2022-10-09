@@ -42,9 +42,19 @@ class UserDataForm extends Component {
     this.setState({
       alreadySubmitted: true
     });
-    
+
     this.props.handleSubmit(e);
   }
+
+  styles = {
+    control: (provided, state) => ({
+      ...provided,
+      background: 'white',
+      borderColor: 'white',
+      minHeight: '65px',
+      height: '65px',
+    })
+  };
 
   render() {
     return <>
@@ -61,16 +71,17 @@ class UserDataForm extends Component {
             <Col size={12} sm={3} className="px-1">
               <input type="text" required value={this.state.formDetails.lastName} placeholder="Last Name" onChange={(e) => this.onFormUpdate('lastName', e.target.value)} />
             </Col>
-            <Col size={12} sm={3} className="px-1">
+            <Col size={12} sm={3}>
               <Select
+              styles={this.styles}
                 required options={countries}
                 placeholder="Select a Country"
                 theme={(theme) => ({
                   ...theme,
-                  borderRadius: 10,
+                  borderRadius: 21,
                   colors: {
                     ...theme.colors,
-                    primary25: 'hotpink',
+                    primary25: 'lightpink',
                     primary: 'black',
                   },
                 })} />

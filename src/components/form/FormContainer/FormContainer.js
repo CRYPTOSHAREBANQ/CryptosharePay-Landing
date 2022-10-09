@@ -22,13 +22,10 @@ class FormContainer extends Component {
     this.setState({
       showSecondForm: true
     });
-
-    alert("First submit!");
   }
 
   handleUserPaymentForm(e) {
     e.preventDefault();
-    alert("Second submit!");
     alert(this.state.showSecondForm);
   }
 
