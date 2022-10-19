@@ -35,6 +35,26 @@ export const Transactions = () => {
       [category]: value
     })
   }
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setButtonText("Sending...");
+    let response = await fetch("https://api.cryptosharepay.com/v1/transactions/payments/all/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(formPayDetails),
+    });
+    setButtonText("Send");
+    let result = await response.json();
+    setFormPayDetails(formPaymentsDetails);
+    if (result.code == 200) {
+      setStatus({ succes: true, message: 'Form sent successfully' });
+    } else {
+      setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
+    }
+  };
 
   const options = [
     { value: 'usd', label: 'USD' },
@@ -120,25 +140,7 @@ export const Transactions = () => {
 
   let dropDownData = dropDownDataToStringArray(getDropdownData());
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("https://api.cryptosharepay.com/v1/transactions/payments/all/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formPayDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormPayDetails(formPaymentsDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Form sent successfully' });
-    } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
-    }
-  };
+  
 
     return (
       <section className="transactions" id="connect">

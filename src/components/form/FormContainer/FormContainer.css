@@ -97,5 +97,6 @@
     font-size: 16px;
     letter-spacing: 0.8px;
     transition: 0.3s ease-in-out;
+    z-index: 0;
   }
   

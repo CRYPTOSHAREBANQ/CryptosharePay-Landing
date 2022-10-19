@@ -12,20 +12,19 @@ class UserPaymentForm extends Component {
     super(props);
     this.state = {
       formPaymentsDetails: {
-        transaction_type: 'PAYMENT_REQUEST',
         description: '',
         digital_currency_code: '',
         digital_currency_amount: '',
         cryptocurrency_code: '',
+        cryptocurrency_blockchain_id: '',
         client_email: '',
-        client_phone: '',
+        client_phone: ''
       },
       alreadySubmitted: false
     };
     this.localHandleSubmit = this.localHandleSubmit.bind(this);
-  }
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-  createForm = () => {
   }
 
   onFormPaymentUpdate = (category, value) => {
@@ -37,6 +36,32 @@ class UserPaymentForm extends Component {
     this.setState({ formPaymentsDetails: newValue });
   }
 
+  cryptoHandleChange = (newValue, _) => {
+
+    let cryptoPaymentsDetails = this.state.formPaymentsDetails
+    
+    cryptoPaymentsDetails.cryptocurrency_blockchain_id = newValue.value
+    cryptoPaymentsDetails.cryptocurrency_code = newValue.label
+
+    this.setState({ formPaymentsDetails: cryptoPaymentsDetails});
+
+    console.log(this.state.formPaymentsDetails);
+
+  }
+
+  currencyHandleChange = (currencyNewValue, _) =>{
+
+    let currencyPaymentsDetails = this.state.formPaymentsDetails
+
+    currencyPaymentsDetails.digital_currency_code = currencyNewValue.label
+
+    this.setState({ formPaymentsDetails: currencyPaymentsDetails});
+
+    console.log(currencyNewValue)
+
+    console.log(this.state.formPaymentsDetails);
+  }
+  
   localHandleSubmit(e) {
     e.preventDefault();
 
@@ -53,11 +78,12 @@ class UserPaymentForm extends Component {
 
     cryptoData.forEach(e => {
       if (!currAdded.has(e.fields.blockchain_id)) {
+        
         currArray.push({
           value: e.fields.blockchain_id,
           label: e.fields.symbol
         })
-        currAdded.add(e.fields.value, e.fields.symbol);
+        currAdded.add(e.fields.blockchain_id);
       }
     })
     return currArray
@@ -73,35 +99,28 @@ class UserPaymentForm extends Component {
     })
   }
 
-  handleSubmit = async (e) => {
+  async handleSubmit(e) {
+
     e.preventDefault();
 
     console.log(this.state.formPaymentsDetails)
 
-    const [formPayDetails, setFormPayDetails] = useState(this.state.formPaymentsDetails);
-    const [buttonText, setButtonText] = useState('Send');
-    const [status, setStatus] = useState({});
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState(null);
-
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("https://api.cryptosharepay.com/v1/transactions/payments/all/", {
+    let response = await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
         "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
       },
-      body: JSON.stringify(formDetails, this.state.formPaymentsDetails),
+      body: JSON.stringify(this.state.formPaymentsDetails),
     });
-    setButtonText("Send");
+
     let result = await response.json();
-    setFormPayDetails(this.formPaymentsDetails);
+    this.onFormPaymentUpdate(this.state.formPaymentsDetails);
     if (result.code == 200) {
-      setStatus({ succes: true, message: 'Form sent successfully' });
+      this.setStatus({ succes: true, message: 'Form sent successfully' });
       alert('Payment Sent Successfully');
     } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
+      this.setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
       alert('Something went wrong, please try again later.');
     }
   };
@@ -112,14 +131,15 @@ class UserPaymentForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <Row>
           <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.formPaymentsDetails.description} placeholder="Transaction Description" onChange={(e) => this.onFormPaymentUpdate('description', e.target.value)} />
+              <input type="text" value={this.state.formPaymentsDetails.description} 
+              placeholder="Transaction Description" onChange={(e) => this.onFormPaymentUpdate('description', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               <Select required
-              value={this.state.digital_currency_code}
+              value={this.state.digital_currency_code} placeholder="Select a Currency" 
                 styles={this.styles}
                 options={currency}
-                placeholder="Select a Currency"
+                onChange={this.currencyHandleChange}
                 theme={(theme) => ({
                   ...theme,
                   borderRadius: 21,
@@ -135,9 +155,10 @@ class UserPaymentForm extends Component {
             </Col>
             <Col size={12} sm={3} className="px-1">
               <Select required
-              value={this.state.cryptocurrency_code}
+              value={this.cryptocurrency_code}
                 styles={this.styles}
                 options={this.getDropdownData()}
+                onChange={this.cryptoHandleChange}
                 placeholder="Select a Crypto Currency"
                 theme={(theme) => ({
                   ...theme,
