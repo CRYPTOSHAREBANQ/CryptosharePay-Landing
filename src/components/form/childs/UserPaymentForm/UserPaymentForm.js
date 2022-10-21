@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import cryptoData from '../../../../assets/data/cryptocurrencies.json';
 import currency from '../../../../assets/data/currencies.json';
 import Select from 'react-select'
-import formDetails from '../UserDataForm'
 
 class UserPaymentForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      formPaymentsDetails: {
+      data: {
         description: '',
         digital_currency_code: '',
         digital_currency_amount: '',
@@ -29,39 +27,33 @@ class UserPaymentForm extends Component {
 
   onFormPaymentUpdate = (category, value) => {
     let newValue = {
-      ...this.state.formPaymentsDetails,
+      ...this.state.data,
       [category]: value
     };
 
-    this.setState({ formPaymentsDetails: newValue });
+    this.setState({ data: newValue });
   }
 
   cryptoHandleChange = (newValue, _) => {
 
-    let cryptoPaymentsDetails = this.state.formPaymentsDetails
-    
+    let cryptoPaymentsDetails = this.state.data
+
     cryptoPaymentsDetails.cryptocurrency_blockchain_id = newValue.value
     cryptoPaymentsDetails.cryptocurrency_code = newValue.label
 
-    this.setState({ formPaymentsDetails: cryptoPaymentsDetails});
-
-    console.log(this.state.formPaymentsDetails);
+    this.setState({ data: cryptoPaymentsDetails });
 
   }
 
-  currencyHandleChange = (currencyNewValue, _) =>{
+  currencyHandleChange = (currencyNewValue, _) => {
 
-    let currencyPaymentsDetails = this.state.formPaymentsDetails
+    let currencyPaymentsDetails = this.state.data
 
     currencyPaymentsDetails.digital_currency_code = currencyNewValue.label
 
-    this.setState({ formPaymentsDetails: currencyPaymentsDetails});
-
-    console.log(currencyNewValue)
-
-    console.log(this.state.formPaymentsDetails);
+    this.setState({ data: currencyPaymentsDetails });
   }
-  
+
   localHandleSubmit(e) {
     e.preventDefault();
 
@@ -78,7 +70,7 @@ class UserPaymentForm extends Component {
 
     cryptoData.forEach(e => {
       if (!currAdded.has(e.fields.blockchain_id)) {
-        
+
         currArray.push({
           value: e.fields.blockchain_id,
           label: e.fields.symbol
@@ -103,40 +95,42 @@ class UserPaymentForm extends Component {
 
     e.preventDefault();
 
-    console.log(this.state.formPaymentsDetails)
-
-    let response = await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
+    await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=utf-8",
+        "Content-Type": "application/json",
         "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
       },
-      body: JSON.stringify(this.state.formPaymentsDetails),
-    });
+      body: JSON.stringify(this.state),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if(res.status !== 'SUCCESS') {
+          throw new Error(res.message);
 
-    let result = await response.json();
-    this.onFormPaymentUpdate(this.state.formPaymentsDetails);
-    if (result.code == 200) {
-      this.setStatus({ succes: true, message: 'Form sent successfully' });
-      alert('Payment Sent Successfully');
-    } else {
-      this.setStatus({ succes: false, message: 'Something went wrong, please try again later.' });
-      alert('Something went wrong, please try again later.');
-    }
-  };
+        }
+        this.setState({ succes: true, message: 'Form sent successfully' });
+        alert('Payment Sent Successfully');
+        window.location.reload();
+      })
+      .catch(err => {
+        this.setState({ succes: false, message: err});
+        alert('Something went wrong, please try again later.');
+      });
+  }
 
   render() {
     return <>
       <div>
         <form onSubmit={this.handleSubmit}>
           <Row>
-          <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.formPaymentsDetails.description} 
-              placeholder="Transaction Description" onChange={(e) => this.onFormPaymentUpdate('description', e.target.value)} />
+            <Col size={12} sm={3} className="px-1">
+              <input type="text" value={this.state.data.description}
+                placeholder="Transaction Description" onChange={(e) => this.onFormPaymentUpdate('description', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               <Select required
-              value={this.state.digital_currency_code} placeholder="Select a Currency" 
+                value={this.state.digital_currency_code} placeholder="Select a Currency"
                 styles={this.styles}
                 options={currency}
                 onChange={this.currencyHandleChange}
@@ -151,11 +145,11 @@ class UserPaymentForm extends Component {
                 })} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" required value={this.state.formPaymentsDetails.digital_currency_amount} placeholder="Currency Amount" onChange={(e) => this.onFormPaymentUpdate('digital_currency_amount', e.target.value)} />
+              <input type="text" required value={this.state.data.digital_currency_amount} placeholder="Currency Amount" onChange={(e) => this.onFormPaymentUpdate('digital_currency_amount', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <Select required
-              value={this.cryptocurrency_code}
+              <Select
+                value={this.cryptocurrency_code}
                 styles={this.styles}
                 options={this.getDropdownData()}
                 onChange={this.cryptoHandleChange}
@@ -171,10 +165,10 @@ class UserPaymentForm extends Component {
                 })} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.formPaymentsDetails.client_email} placeholder="Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
+              <input type="text" value={this.state.data.client_email} placeholder="Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.formPaymentsDetails.client_phone} placeholder="Phone" onChange={(e) => this.onFormPaymentUpdate('client_phone', e.target.value)} />
+              <input type="text" value={this.state.data.client_phone} placeholder="Phone" onChange={(e) => this.onFormPaymentUpdate('client_phone', e.target.value)} />
             </Col>
           </Row>
           <Row size={12} sm={4} >
