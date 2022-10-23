@@ -45,8 +45,7 @@ class UserDataForm extends Component {
 
   async localHandleSubmitValidAccount(e) {
     e.preventDefault();
-
-    this.props.saveFormData("password", this.state.data.password);
+    
     this.props.saveFormData("email", this.state.data.email);
 
     const apiKey = await this.getApiKey(this.state.data.email);
@@ -107,9 +106,6 @@ class UserDataForm extends Component {
           <Row>
             <Col size={12} sm={3} className="px-1">
               <input type="email" required value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
-            </Col>
-            <Col size={12} sm={3} className="px-1">
-              {this.state.isValidAccount && <input type="password" required value={this.state.data.password} placeholder="Password" onChange={(e) => this.onFormUpdate('password', e.target.value)} />}
             </Col>
           </Row>
           <Row size={12} sm={4} >
