@@ -77,8 +77,6 @@ class UserDataRegistrationForm extends Component {
 
     const jsonRes = await res.json();
 
-    alert(`Account ${this.state.email} created:\n\nCustomer ID ${jsonRes.data.customer_id}\n\nBusiness ID ${jsonRes.data.business_id}`)
-
     return [jsonRes.data.api_key, jsonRes.data.customer_id, jsonRes.data.business_id];
   }
 

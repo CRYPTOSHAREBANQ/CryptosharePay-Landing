@@ -93,7 +93,6 @@ class UserDataForm extends Component {
     
     if (res) {
       console.log(email)
-      
       const jsonRes = await res.json();
       return jsonRes.data.api_key;
     } else {
