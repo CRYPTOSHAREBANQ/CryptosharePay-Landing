@@ -80,7 +80,7 @@ class UserDataForm extends Component {
 
   async getApiKey(email) {
     
-    const res = await fetch("https://api.cryptosharepay.com/v1/protected/api-keys/api-key-no-account/TEST", {
+    const res = await fetch("https://api.cryptosharepay.com/v1/protected/api-keys/api-key-no-account/PRODUCTION", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,6 @@ class UserDataForm extends Component {
     })
     
     if (res) {
-      console.log(email)
       const jsonRes = await res.json();
       return jsonRes.data.api_key;
     } else {

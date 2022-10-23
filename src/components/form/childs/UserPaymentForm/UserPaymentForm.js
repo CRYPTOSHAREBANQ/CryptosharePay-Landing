@@ -21,8 +21,6 @@ class UserPaymentForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    console.log("props")
-    console.log(this.props)
   }
 
   onFormPaymentUpdate = (category, value) => {
@@ -71,9 +69,6 @@ class UserPaymentForm extends Component {
           throw new Error(res.message);
         } else {
           alert('Payment Sent Successfully');
-
-          console.log("Trans res:")
-          console.log(res)
           
           const transaction_response = {
             transaction_id: res.data.transaction_id,

@@ -23,8 +23,6 @@ class UserDataRegistrationForm extends Component {
     };
 
     this.localHandleSubmit = this.localHandleSubmit.bind(this);
-
-    console.log(this.props);
   }
 
   onFormUpdate = (category, value) => {
@@ -34,7 +32,6 @@ class UserDataRegistrationForm extends Component {
     };
 
     this.setState({ data: newValue });
-    console.log(this.state);
   }
 
   async localHandleSubmit(e) {
