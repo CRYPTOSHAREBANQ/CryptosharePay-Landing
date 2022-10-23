@@ -100,13 +100,13 @@ class UserDataRegistrationForm extends Component {
         <form>
           <Row>
             <Col size={12} sm={3} className="px-1">
-              <input type="email"  value={this.state.data.email} placeholder="Email Address"/>
+              <input type="email" required value={this.state.data.email} placeholder="Email Address"/>
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text"  value={this.state.data.firstName} placeholder="First Name" onChange={(e) => this.onFormUpdate('first_name', e.target.value)} />
+              <input type="text" required value={this.state.data.firstName} placeholder="First Name" onChange={(e) => this.onFormUpdate('first_name', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text"  value={this.state.data.lastName} placeholder="Last Name" onChange={(e) => this.onFormUpdate('last_name', e.target.value)} />
+              <input type="text" required value={this.state.data.lastName} placeholder="Last Name" onChange={(e) => this.onFormUpdate('last_name', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               <input type="password" required value={this.state.data.password} placeholder="Password" onChange={(e) => this.onFormUpdate('password', e.target.value)} />
@@ -116,6 +116,7 @@ class UserDataRegistrationForm extends Component {
             </Col>
             <Col size={12} sm={3}>
               <Select
+              required
               value={this.country_id}
               onChange={(countryNewValue, _) => this.onFormUpdate('country_id', countryNewValue.value)}
                 styles={this.styles}
@@ -132,10 +133,10 @@ class UserDataRegistrationForm extends Component {
                 })} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.business_name} placeholder="Business Name" onChange={(e) => this.onFormUpdate('business_name', e.target.value)} />
+              <input type="text" required value={this.state.data.business_name} placeholder="Business Name" onChange={(e) => this.onFormUpdate('business_name', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.business_description} placeholder="Business Description" onChange={(e) => this.onFormUpdate('business_description', e.target.value)} />
+              <input type="text" required value={this.state.data.business_description} placeholder="Business Description" onChange={(e) => this.onFormUpdate('business_description', e.target.value)} />
             </Col>
           </Row>
           <Row size={12} sm={4} >

@@ -130,7 +130,7 @@ class UserPaymentForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <Row>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.description}
+              <input type="text" required value={this.state.data.description}
                 placeholder="Transaction Description" onChange={(e) => this.onFormPaymentUpdate('description', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
@@ -154,6 +154,7 @@ class UserPaymentForm extends Component {
             </Col>
             <Col size={12} sm={3} className="px-1">
               <Select
+                required
                 value={this.cryptocurrency_code}
                 styles={this.styles}
                 options={this.getDropdownData()}
@@ -170,10 +171,10 @@ class UserPaymentForm extends Component {
                 })} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.client_email} placeholder=" Target Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
+              <input type="text" required value={this.state.data.client_email} placeholder=" Target Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.client_phone} placeholder="Phone" onChange={(e) => this.onFormPaymentUpdate('client_phone', e.target.value)} />
+              <input type="text" required value={this.state.data.client_phone} placeholder="Phone" onChange={(e) => this.onFormPaymentUpdate('client_phone', e.target.value)} />
             </Col>
           </Row>
           <Row size={12} sm={4} >

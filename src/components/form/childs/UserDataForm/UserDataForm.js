@@ -7,7 +7,7 @@ class UserDataForm extends Component {
     super(props);
     this.state = {
       data: {
-        email: 'testaccount@cryptosharepay.com',
+        email: '',
         password: ''
       },
       isValidAccount: false
@@ -49,10 +49,11 @@ class UserDataForm extends Component {
     this.props.saveFormData("password", this.state.data.password);
     this.props.saveFormData("email", this.state.data.email);
 
-    const apiKey = await this.getApiKey();
+    const apiKey = await this.getApiKey(this.state.data.email);
     if (apiKey === null) {
-      // return;
+       return;
     }
+    
     this.props.saveFormData("api_key", apiKey);
 
     this.props.handleSubmit(3);
@@ -78,6 +79,7 @@ class UserDataForm extends Component {
   }
 
   async getApiKey(email) {
+    
     const res = await fetch("https://api.cryptosharepay.com/v1/protected/api-keys/api-key-no-account/TEST", {
       method: "GET",
       headers: {
@@ -90,6 +92,8 @@ class UserDataForm extends Component {
     })
     
     if (res) {
+      console.log(email)
+      
       const jsonRes = await res.json();
       return jsonRes.data.api_key;
     } else {
@@ -104,7 +108,7 @@ class UserDataForm extends Component {
         <form>
           <Row>
             <Col size={12} sm={3} className="px-1">
-              <input type="email" value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
+              <input type="email" required value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               {this.state.isValidAccount && <input type="password" required value={this.state.data.password} placeholder="Password" onChange={(e) => this.onFormUpdate('password', e.target.value)} />}
