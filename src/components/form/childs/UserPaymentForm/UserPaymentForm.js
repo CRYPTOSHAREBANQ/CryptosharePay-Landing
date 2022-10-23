@@ -17,12 +17,12 @@ class UserPaymentForm extends Component {
         cryptocurrency_blockchain_id: '',
         client_email: '',
         client_phone: ''
-      },
-      alreadySubmitted: false
+      }
     };
-    this.localHandleSubmit = this.localHandleSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
+    console.log("props")
+    console.log(this.props)
   }
 
   onFormPaymentUpdate = (category, value) => {
@@ -54,14 +54,46 @@ class UserPaymentForm extends Component {
     this.setState({ data: currencyPaymentsDetails });
   }
 
-  localHandleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
 
-    this.setState({
-      alreadySubmitted: true
-    });
+    await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
+      },
+      body: JSON.stringify(this.state),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if(res.status !== 'SUCCESS') {
+          throw new Error(res.message);
+        } else {
+          alert('Payment Sent Successfully');
 
-    this.props.handleSubmit(e);
+          console.log("Trans res:")
+          console.log(res)
+          
+          const transaction_response = {
+            transaction_id: res.data.transaction_id,
+            currency_code: res.data.cryptocurrency_code,
+            deposit_address: res.data.deposit_crypto_address,
+            deposit_amount: res.data.deposit_crypto_amount,
+            expiration: res.data.expiration_timestamp,
+            creation: res.data.creation_timestamp,
+            paymentUrl: res.data.payment_url,
+          }
+
+          this.props.saveFormData("transaction_response", transaction_response);
+
+          this.props.handleSubmit(4);
+        }
+      })
+      .catch(err => {
+        alert('Something went wrong, please try again later.');
+      });
+
   }
 
   getDropdownData = () => {
@@ -91,37 +123,10 @@ class UserPaymentForm extends Component {
     })
   }
 
-  async handleSubmit(e) {
-
-    e.preventDefault();
-
-    await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
-      },
-      body: JSON.stringify(this.state),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if(res.status !== 'SUCCESS') {
-          throw new Error(res.message);
-
-        }
-        this.setState({ succes: true, message: 'Form sent successfully' });
-        alert('Payment Sent Successfully');
-        window.location.reload();
-      })
-      .catch(err => {
-        this.setState({ succes: false, message: err});
-        alert('Something went wrong, please try again later.');
-      });
-  }
-
   render() {
     return <>
       <div>
+      <h2>Make a Transaction</h2>
         <form onSubmit={this.handleSubmit}>
           <Row>
             <Col size={12} sm={3} className="px-1">
@@ -165,7 +170,7 @@ class UserPaymentForm extends Component {
                 })} />
             </Col>
             <Col size={12} sm={3} className="px-1">
-              <input type="text" value={this.state.data.client_email} placeholder="Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
+              <input type="text" value={this.state.data.client_email} placeholder=" Target Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               <input type="text" value={this.state.data.client_phone} placeholder="Phone" onChange={(e) => this.onFormPaymentUpdate('client_phone', e.target.value)} />
