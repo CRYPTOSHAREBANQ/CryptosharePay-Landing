@@ -79,7 +79,7 @@ class UserDataForm extends Component {
 
   async getApiKey(email) {
     
-    const res = await fetch("https://api.cryptosharepay.com/v1/protected/api-keys/api-key-no-account/PRODUCTION", {
+    const res = await fetch("https://api.cryptosharepay.com/v1/protected/api-keys/api-key-no-account/TEST", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -107,6 +107,7 @@ class UserDataForm extends Component {
             <Col size={12} sm={3} className="px-1">
               <input type="email" required value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
             </Col>
+
           </Row>
           <Row size={12} sm={4} >
             {!this.state.isValidAccount && <button onClick={this.localHandleSubmit}><span>Continue</span></button>}

@@ -87,6 +87,7 @@ class UserPaymentForm extends Component {
       })
       .catch(err => {
         alert('Something went wrong, please try again later.');
+        console.log(err)
       });
 
   }

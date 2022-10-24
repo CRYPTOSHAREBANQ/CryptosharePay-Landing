@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import SimpleDateTime  from 'react-simple-timestamp-to-date';
 
 class ShowTransactionResult extends Component {
   constructor(props) {
     super(props);
 
     this.localHandleSubmit = this.localHandleSubmit.bind(this);
-    
   }
 
   localHandleSubmit(e) {
@@ -41,12 +41,12 @@ class ShowTransactionResult extends Component {
             </Row>
             <Row size={12} sm={2} >
             <Col size={12} sm={6} className="px-1">
-              <h4> Expiration: </h4>
-              <p> {this.props.data.transaction_response.expiration} </p>
+              <h4> Creation: </h4>
+              <p> <SimpleDateTime dateFormat="DMY" dateSeparator="/"  timeSeparator=":">{this.props.data.transaction_response.creation}</SimpleDateTime></p>
             </Col>
             <Col size={12} sm={6} className="px-1">
-              <h4> Creation: </h4>
-              <p> {this.props.data.transaction_response.creation} </p>
+              <h4> Expiration: </h4>
+              <p> <SimpleDateTime dateFormat="DMY" dateSeparator="/"  timeSeparator=":">{this.props.data.transaction_response.expiration}</SimpleDateTime></p>
             </Col>
             </Row>
             <Row size={12} sm={2} >
