@@ -12,7 +12,8 @@ export const SignUp = () => {
     lastName: '',
     email: '',
     phone: '',
-    message: ''
+    password: '',
+    confirm_password: ''
   }
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
@@ -40,16 +41,15 @@ export const SignUp = () => {
     return currArray;
   };
 
-  const dropDownCountriesToStringArray = (data) => {
-    let stringArr = [];
-
-    data.forEach(e => {
-      stringArr.push(e.value.toUpperCase() + ' (' + e.label + ')');
-    });
-    return stringArr;
+  const styles = {
+    control: (provided, state) => ({
+      ...provided,
+      background: 'white',
+      borderColor: 'white',
+      minHeight: '65px',
+      height: '65px',
+    })
   };
-
-  let dropDownCountries = getDropdownCountries();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,22 +103,22 @@ export const SignUp = () => {
                         <input type="password" required value={formDetails.password} placeholder="Password" onChange={(e) => onFormUpdate('password', e.target.value)} />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
-                        <input type="password" required value={formDetails.password} placeholder="Confirm Password" onChange={(e) => onFormUpdate('password', e.target.value)} />
+                        <input type="password" required value={formDetails.confirm_password} placeholder="Confirm Password" onChange={(e) => onFormUpdate('confirm_password', e.target.value)} />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
-                          <Select 
-                          required options={countries} 
-                          placeholder="Select a Country" 
+                        <Select
+                          styles={styles}
+                          required options={countries}
+                          placeholder="Select a Country"
                           theme={(theme) => ({
                             ...theme,
-                            borderRadius: 10,
-                            colors:{
+                            borderRadius: 21,
+                            colors: {
                               ...theme.colors,
-                              primary25: 'hotpink',
+                              primary25: 'lightpink',
                               primary: 'black',
                             },
-                          })}/>
-                        <button type="submit"><span>{buttonText}</span></button>
+                          })} />
                       </Col>
                       {
                         status.message &&

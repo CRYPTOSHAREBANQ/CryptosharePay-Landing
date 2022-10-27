@@ -1,4 +1,4 @@
-/************ Payments Css ************/
+/************ Form Container Css ************/
 .payments {
     background: linear-gradient(90.21deg, #4A2FBD -5.91%, #AA367C 111.58%);
     padding: 60px 0 200px 0;
@@ -61,7 +61,7 @@
   }
   
   .payments form button span {
-    z-index: 1;
+    z-index: 0;
     position: relative;
   }
   
@@ -85,7 +85,7 @@
     width: 100%;
   }
   
-  .dropdown {
+  .select {
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -97,5 +97,6 @@
     font-size: 16px;
     letter-spacing: 0.8px;
     transition: 0.3s ease-in-out;
+    z-index: 0;
   }
   

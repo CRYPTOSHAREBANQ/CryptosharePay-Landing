@@ -1,0 +1,6 @@
+[
+    { "value": "usd", "label": "USD" },
+    { "value": "mxn", "label": "MXN" },
+    { "value": "eur", "label": "EUR" },
+    { "value": "col", "label": "COL" }
+]

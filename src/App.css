@@ -34,7 +34,7 @@ body {
   overflow-x: hidden;
   position: relative;
   background-color: #121212 !important;
-  color: #fff !important;
+  color: #909092 !important;
   font-family: 'Centra', sans-serif !important;
 }
 
@@ -44,6 +44,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: #FFFFFF;
   margin: 0;
   padding: 0;
   line-height: normal;
@@ -54,6 +55,7 @@ a,
 li,
 button,
 ul {
+  color: #FFFFFF;
   margin: 0;
   padding: 0;
   line-height: normal;
@@ -72,6 +74,10 @@ img {
 button {
   border: 0;
   background-color: transparent;
+}
+
+Select{
+  height: 65px;
 }
 
 input:focus,
