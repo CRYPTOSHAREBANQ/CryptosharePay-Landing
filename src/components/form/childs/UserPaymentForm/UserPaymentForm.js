@@ -15,6 +15,7 @@ class UserPaymentForm extends Component {
         digital_currency_amount: '',
         cryptocurrency_code: '',
         cryptocurrency_blockchain_id: '',
+        withdrawal_address: '',
         client_email: '',
         client_phone: ''
       }
@@ -165,6 +166,9 @@ class UserPaymentForm extends Component {
                     primary: 'black',
                   },
                 })} />
+            </Col>
+            <Col size={12} sm={3} className="px-1">
+              <input type="text" required={this.state.data.cryptocurrency_code==='ETH' || this.state.data.cryptocurrency_code === 'TRX'} value={this.state.data.withdrawal_address} placeholder="Withdrawal Address" onChange={(e) => this.onFormPaymentUpdate('withdrawal_address', e.target.value)} />
             </Col>
             <Col size={12} sm={3} className="px-1">
               <input type="text" required value={this.state.data.client_email} placeholder=" Target Email" onChange={(e) => this.onFormPaymentUpdate('client_email', e.target.value)} />
