@@ -42,9 +42,9 @@ export const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#home" className={activeLink === 'Home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#company" className={activeLink === 'company' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('company')}>Company</Nav.Link>
+              <Nav.Link href="#company" className={activeLink === 'company' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('company')}>CryptoSharePay</Nav.Link>
               <Nav.Link href="#apis" className={activeLink === 'apis' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('Apis')}>API Reference</Nav.Link>
-              <Nav.Link href="#apis" className={activeLink === 'apis' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('apis')}>Payments</Nav.Link>
+              <Nav.Link href="#payments" className={activeLink === 'payments' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('payments')}>Payments</Nav.Link>
             </Nav>
             <span className="navbar-text">
               <HashLink to='#connect'>

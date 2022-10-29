@@ -8,12 +8,17 @@ import Select from 'react-select'
 
 export const SignUp = () => {
   const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirm_password: ''
+    data:{
+      firstName: '',
+      lastName: '',
+      email: '',
+      type: 'NO_ACCOUNT',
+      phone: '',
+      password: '',
+      confirm_password: '',
+      country_id: '',
+
+    }
   }
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
@@ -25,21 +30,6 @@ export const SignUp = () => {
       [category]: value
     })
   }
-
-  const getDropdownCountries = () => {
-    let currArray = [];
-    let currAdded = new Set();
-    countries.forEach(e => {
-      if (!currAdded.has(e.value)) {
-        currArray.push({
-          value: e.value,
-          label: e.label
-        });
-        currAdded.add(e.value);
-      }
-    });
-    return currArray;
-  };
 
   const styles = {
     control: (provided, state) => ({
@@ -126,6 +116,9 @@ export const SignUp = () => {
                           <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
                         </Col>
                       }
+                    </Row>
+                    <Row size={12} sm={4} >
+                      <button type="submit"><span>Send</span></button>
                     </Row>
                   </form>
                 </div>}

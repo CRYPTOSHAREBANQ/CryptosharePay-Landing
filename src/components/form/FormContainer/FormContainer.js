@@ -45,7 +45,7 @@ class FormContainer extends Component {
 
   render() {
     return <>
-      <section className="payments">
+      <section className="payments" id="payments">
         <div className="p-4">
         {this.state.currentStep === this.EMAIL_STEP && <UserDataForm handleSubmit={this.changeState} saveFormData={this.saveFormData} />}
         {this.state.currentStep === this.USER_INFO_STEP && <UserDataRegistrationForm handleSubmit={this.changeState} saveFormData={this.saveFormData} data={this.state.data} />}

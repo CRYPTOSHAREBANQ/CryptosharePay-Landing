@@ -41,13 +41,19 @@ body {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   color: #FFFFFF;
   margin: 0;
   padding: 0;
   line-height: normal;
+}
+
+h4{
+  color: #d0d0d0;
+  margin: 0;
+  padding: 0;
+
 }
 
 p,
@@ -359,6 +365,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .company {
   padding: 0 0 50px 0;
   position: relative;
+  z-index:-2;
 }
 
 .company-bx {
@@ -800,6 +807,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .signup form button span {
   z-index: 1;
   position: relative;
+  z-index:0;
 }
 
 .signup form button:hover {

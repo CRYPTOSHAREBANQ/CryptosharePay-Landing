@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "APIs for Developers" ];
+  const toRotate = [ "APIs" ];
   const period = 2000;
 
   useEffect(() => {
@@ -55,8 +55,8 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h1>{`CryptoSharePay`} <span className="txt-rotate" dataperiod="1000" data-rotate='[ "APIs for Developers"]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h1>{`CryptoSharePay`} <span className="txt-rotate" dataperiod="1000" data-rotate='[ "APIs"]'><span className="wrap">{text}</span></span></h1>
+                  <p>CryptoSharePay is the World’s First Decentralized Crypto Credit Card Payment System.</p>
                   <button onClick={() => console.log('connect')}>Get started for free <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>

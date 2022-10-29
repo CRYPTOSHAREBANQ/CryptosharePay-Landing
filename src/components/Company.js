@@ -32,26 +32,8 @@ export const Company = () => {
             <div className="row">
                 <div className="col-12">
                     <div className="company-bx wow zoomIn">
-                        <h2>Company</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme company-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>Brand Identity</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                        </Carousel>
+                        <h2>What is CryptoSharePay?</h2>
+                        <h4>CryptosharePay offers a Simple solution that allows Businesses and Financial Institutions to Accept & Pay 100% with Cryptocurrency (In-Person/Online) using a Digital Card.</h4>
                     </div>
                 </div>
             </div>

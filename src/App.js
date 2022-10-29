@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <NavBar />
       <Banner />
+      <SignUp />
       <Company />
       <Apis />
       <FormContainer />
-      <SignUp />
       <Footer />
     </div>
   );
