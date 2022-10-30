@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: [self-hosted, ec2-instance2]
 
     strategy:
       matrix:
