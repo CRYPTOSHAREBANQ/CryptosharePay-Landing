@@ -1,24 +1,24 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from "./components/NavBar";
-import { Banner } from "./components/Banner";
-import { Company } from "./components/Company";
-import { Apis } from "./components/Apis";
-import FormContainer from "./components/form/FormContainer/FormContainer";
-import { SignUp } from "./components/SignUp";
-import { Footer } from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from "./pages/Home/Home"
+import Transactions from './pages/Transactions/Transactions';
+import Payments from './components/form/FormContainer/FormContainer';
+import { Company } from './components/Company';
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Banner />
-      <SignUp />
-      <Company />
-      <Apis />
-      <FormContainer />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path='/' element={< Home />}></Route>
+          <Route extract path='/company' element={< Company />}></Route>
+          <Route exact path='/transactions/' element={< Transactions />}></Route>
+          <Route exact path='/payments/' element={< Payments />}></Route>
+        </Routes>
+      </div>
+
+    </Router>
+
   );
 }
 

@@ -4,6 +4,7 @@ import UserDataRegistrationForm from "../childs/UserDataRegistrationForm";
 import UserDataForm from "../childs/UserDataForm/UserDataForm";
 import UserPaymentForm from "../childs/UserPaymentForm/UserPaymentForm";
 import "./FormContainer.css"
+import { Container } from "react-bootstrap";
 
 class FormContainer extends Component {
   EMAIL_STEP = 1;
@@ -46,12 +47,21 @@ class FormContainer extends Component {
   render() {
     return <>
       <section className="payments" id="payments">
+        <Container>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+        </Container>
+        <Container>
         <div className="p-4">
         {this.state.currentStep === this.EMAIL_STEP && <UserDataForm handleSubmit={this.changeState} saveFormData={this.saveFormData} />}
         {this.state.currentStep === this.USER_INFO_STEP && <UserDataRegistrationForm handleSubmit={this.changeState} saveFormData={this.saveFormData} data={this.state.data} />}
         {this.state.currentStep === this.TRANSACTION_DATA_STEP && <UserPaymentForm handleSubmit={this.changeState} saveFormData={this.saveFormData} data={this.state.data} />}
         {this.state.currentStep === this.SHOW_TRANSACTION_RESULT && <ShowTransactionResult handleSubmit={this.changeState} saveFormData={this.saveFormData} data={this.state.data}/>}
         </div>
+        </Container>
+        
       </section>
     </>;
   }
