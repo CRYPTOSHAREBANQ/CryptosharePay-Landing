@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import SimpleDateTime  from 'react-simple-timestamp-to-date';
-import {QRCodeSVG} from 'qrcode.react';
-import { QrCode } from "react-bootstrap-icons";
+import QRCode from 'qrcode.react';
+import { QRCodeSVG, QRCodeCanvas } from "qrcode.react";
 
 class ShowTransactionResult extends Component {
   constructor(props) {
@@ -17,6 +17,8 @@ class ShowTransactionResult extends Component {
   }
 
   render() {
+    const urlPayment = this.props.data.transaction_response.paymentUrl
+
     return <>
       <div>
       <h2>Transaction Successful</h2>
@@ -55,8 +57,16 @@ class ShowTransactionResult extends Component {
             <Col size={12} sm={6} className="px-1">
               <h4> Payment Url: </h4>
               <p> {this.props.data.transaction_response.paymentUrl}  </p>
-              <QrCode value= {this.props.data.transaction_response.paymentUrl} renderAs="canvas"/>
-              document.getElementById('mountNode')
+            </Col>
+            <Col size={12} sm={6} className="px-1">
+              <QRCodeSVG
+                value={`${urlPayment}`}
+                size={128}
+                bgColor={"#ffffff"}
+                fgColor={"#000000"}
+                level={"L"}
+                includeMargin={false}
+              />
             </Col>
           </Row>
           <Row size={12} sm={4} >
