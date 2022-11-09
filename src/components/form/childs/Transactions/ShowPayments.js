@@ -119,6 +119,7 @@ class ShowPayments extends Component {
 
     return <>
       {Content}
+
     </>;
   }
 }
