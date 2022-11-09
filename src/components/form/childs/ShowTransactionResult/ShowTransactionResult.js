@@ -57,8 +57,6 @@ class ShowTransactionResult extends Component {
             <Col size={12} sm={6} className="px-1">
               <h4> Payment Url: </h4>
               <p> {this.props.data.transaction_response.paymentUrl}  </p>
-              <QrCode value= {this.props.data.transaction_response.paymentUrl} renderAs="canvas"/>
-              document.getElementById('mountNode')
             </Col>
             <Col size={12} sm={6} className="px-1">
               <QRCodeSVG
