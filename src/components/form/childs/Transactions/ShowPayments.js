@@ -51,7 +51,8 @@ class ShowPayments extends Component {
                 <p>{this.state.transactionData.transaction_id}</p>
                 </Col>
                 <Col size={12} sm={6} className="px-1">
-                <h4> Adress: </h4>
+                <h4> Address: </h4>
+                <p>{this.state.transactionData.address}</p>
                 </Col>
                 <Col size={12} sm={6} className="px-1">
                 <h1> <QrCode size= '23%' value= {this.state.transactionData.address} renderAs="canvas"/> </h1>
@@ -85,14 +86,6 @@ class ShowPayments extends Component {
                 <Col size={12} sm={6} className="px-1">
                 <h4> Cryptocurrency Amount Received: </h4>
                 <p>{this.state.transactionData.cryptocurrency_amount_received}</p>
-                </Col>
-                <Col size={12} sm={6} className="px-1">
-                <h4> Client Email: </h4>
-                <p>{this.state.transactionData.client_email}</p>
-                </Col>
-                <Col size={12} sm={6} className="px-1">
-                <h4> Client Phone: </h4>
-                <p>{this.state.transactionData.client_phone}</p>
                 </Col>
                 <Col size={12} sm={6} className="px-1">
                 <h4> Creation DateTime: </h4>
