@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import SimpleDateTime  from 'react-simple-timestamp-to-date';
+import {QRCodeSVG} from 'qrcode.react';
+import { QrCode } from "react-bootstrap-icons";
 
 class ShowTransactionResult extends Component {
   constructor(props) {
@@ -53,6 +55,8 @@ class ShowTransactionResult extends Component {
             <Col size={12} sm={6} className="px-1">
               <h4> Payment Url: </h4>
               <p> {this.props.data.transaction_response.paymentUrl}  </p>
+              <QrCode value= {this.props.data.transaction_response.paymentUrl} renderAs="canvas"/>
+              document.getElementById('mountNode')
             </Col>
           </Row>
           <Row size={12} sm={4} >

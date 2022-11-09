@@ -29,7 +29,11 @@ class UserDataForm extends Component {
   async localHandleSubmit(e) {
     e.preventDefault(e);
 
-    // Part 1: Validate email
+    if(this.state.data.email === null ) {
+      alert("Missing email")
+    } 
+    else {
+      // Part 1: Validate email
     const emailAvailable = await this.validateEmail(this.state.data.email);
 
     if (emailAvailable) {
@@ -41,6 +45,8 @@ class UserDataForm extends Component {
         isValidAccount: true
       });
     }
+    }
+
   }
 
   async localHandleSubmitValidAccount(e) {
@@ -105,7 +111,7 @@ class UserDataForm extends Component {
         <form>
           <Row>
             <Col size={12} sm={3} className="px-1">
-              <input type="email" required value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
+              <input required type="email" value={this.state.data.email} placeholder="Email Address" onChange={(e) => this.onFormUpdate('email', e.target.value)} />
             </Col>
 
           </Row>
