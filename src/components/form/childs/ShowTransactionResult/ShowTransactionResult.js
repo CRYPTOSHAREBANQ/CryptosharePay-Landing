@@ -71,6 +71,8 @@ class ShowTransactionResult extends Component {
           </Row>
           <Row size={12} sm={4} >
             <button onClick={this.localHandleSubmit}><span>New Transaction</span></button>
+            <div></div>
+            <button onClick={(e) => {e.preventDefault(); window.location.href='https://cryptoshareapp.com/cryptosharepay/pay-with-crypto/'+ this.props.data.transaction_response.transaction_id}}><span>Pay with Cryptoshare</span></button>
           </Row>
         </form>
       </div>

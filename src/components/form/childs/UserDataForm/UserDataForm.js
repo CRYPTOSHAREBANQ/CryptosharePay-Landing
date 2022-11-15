@@ -28,11 +28,6 @@ class UserDataForm extends Component {
 
   async localHandleSubmit(e) {
     e.preventDefault(e);
-
-    if(this.state.data.email === null ) {
-      alert("Missing email")
-    } 
-    else {
       // Part 1: Validate email
     const emailAvailable = await this.validateEmail(this.state.data.email);
 
@@ -45,7 +40,7 @@ class UserDataForm extends Component {
         isValidAccount: true
       });
     }
-    }
+
 
   }
 
@@ -58,18 +53,22 @@ class UserDataForm extends Component {
     if (apiKey === null) {
        return;
     }
-    
     this.props.saveFormData("api_key", apiKey);
 
     this.props.handleSubmit(3);
   }
 
-  async validateEmail(_email, apiKey) {
+  async validateEmail(_email) {
     const body = {
       data: {
         email: _email
       }
     };
+
+    const apiKey = await this.getApiKey(this.state.data.email);
+
+   console.log("Esta es la apiKey:")
+    console.log(apiKey)
 
     const res = await fetch("https://api.cryptosharepay.com/v1/protected/accounts/email-has-account/", {
       method: "POST",
