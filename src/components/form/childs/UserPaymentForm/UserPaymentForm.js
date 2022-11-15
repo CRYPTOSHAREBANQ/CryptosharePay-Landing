@@ -53,14 +53,14 @@ class UserPaymentForm extends Component {
     this.setState({ data: currencyPaymentsDetails });
   }
 
-  async handleSubmit(e) {
+  async handleSubmit(e, apiKey) {
     e.preventDefault();
 
     await fetch("https://api.cryptosharepay.com/v1/transactions/payments/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
+        "X-Api-key": apiKey
       },
       body: JSON.stringify(this.state),
     })

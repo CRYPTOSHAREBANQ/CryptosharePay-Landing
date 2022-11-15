@@ -9,54 +9,45 @@ import TrackVisibility from 'react-on-screen';
 
 export const Apis = () => {
 
-  const apisNames = [
-    {
-      title: "ACCEPT CRYPTO PAYMENTS",
-      imgUrl: projImg1,
-    },
-    {
-      title: "ISSUE CRYPTO DIGITAL CARDS",
-      imgUrl: projImg2,
-    },
-    {
-      title: "PAY CLIENTS & EMPLOYEES WITH CRYPTO",
-      imgUrl: projImg3,
-    },
-  ];
-
   return (
     <section className="apis" id="apis">
-      <Container>
-        <Row>
-          <Col size={12}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>CryptosharePay Use Cases</h2>
-                <p>Pay Employees, International Contractors and Other Goods or Services with Crypto!</p>
-                <Tab.Container id="apis-tabs" defaultActiveKey="first">
-                  <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                    <Tab.Pane eventKey="first">
-                      <Row>
-                        {
-                          apisNames.map((apisNames, index) => {
-                            return (
-                              <ItemsCard
-                                key={index}
-                                {...apisNames}
-                                />
-                            )
-                          })
-                        }
-                      </Row>
-                    </Tab.Pane>
-                  </Tab.Content>
-                </Tab.Container>
-              </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="company-bx wow zoomIn">
+              <h2>What is CryptoSharePay?</h2>
+              <p>CryptosharePay offers a Simple solution that allows Businesses and Financial Institutions to Accept & Pay 100% with Cryptocurrency (In-Person/Online) using a Digital Card.</p>
+              <Container >
+                <Row size={6} sm={3}>
+                  <Col size={12} sm={3} className="px-1">
+                    <h3 className="apis-text1"> ACCEPT CRYPTO PAYMENTS </h3>
+                    <br></br>
+                    <br></br>
+                  </Col>
+                  <Col size={12} sm={3} className="px-1">
+                    <h3 className="apis-text2"> ISSUE CRYPTO DIGITAL CARDS </h3>
+                  </Col>
+                  <Col size={12} sm={3} className="px-1">
+                    <h3 className="apis-text3"> PAY CLIENTS & EMPLOYEES WITH CRYPTO </h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col size={12} sm={3} className="px-1">
+                    <img className="apis-img1" src={projImg1} alt="Image" />
+                  </Col>
+                  <Col size={12} sm={3} className="px-1">
+
+                    <img className="apis-img2" src={projImg2} alt="Image" />
+                  </Col>
+                  <Col size={12} sm={3} className="px-1">
+                    <img className="apis-img3" src={projImg3} alt="Image" />
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

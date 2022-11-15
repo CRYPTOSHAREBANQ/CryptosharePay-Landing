@@ -64,7 +64,7 @@ class UserDataForm extends Component {
     this.props.handleSubmit(3);
   }
 
-  async validateEmail(_email) {
+  async validateEmail(_email, apiKey) {
     const body = {
       data: {
         email: _email
@@ -75,7 +75,7 @@ class UserDataForm extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Api-key": "tsk_b67044466d5bb5dbc6c05f794a3f4ad2"
+        "X-Api-key": apiKey
       },
       body: JSON.stringify(body)
     });
