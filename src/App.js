@@ -12,10 +12,10 @@ function App() {
 
   return (
       <div className="App">
-        <NavBar />
+        {/* <NavBar /> */}
         <Routes>
-          <Route exact path='/' element={< Home />}></Route>
-          <Route extract path='/company' element={< Company />}></Route>
+          {/* <Route exact path='/' element={< Home />}></Route>
+          <Route extract path='/company' element={< Company />}></Route> */}
           <Route exact path='/transactions/' element={< Transactions />}></Route>
           <Route exact path='/transactions/payments/:transactionId' element={< Payments />}></Route>
         </Routes>
